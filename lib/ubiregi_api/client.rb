@@ -4,15 +4,12 @@
 #
 class UbiregiAPI::Client
   # 
-  # [secret]
-  #  The secret to identify which the client app is accessing. The secret is generated in ubiregi.com.
   # [token]
   #  The token to identify which account is accessing. The token is generated for each installation of the app in ubiregi.com.
   # [endpoint]
   #  The API endpoint. This is almost only for development of this class.
   # 
-  def initialize(secret, token, endpoint = "https://ubiregi.com/api/3/")
-    @secret = secret
+  def initialize(token, endpoint = "https://ubiregi.com/api/3/")
     @token = token
     @endpoint = endpoint
     
@@ -21,19 +18,13 @@ class UbiregiAPI::Client
   
   #
   # Default HTTP request headers.
-  # The headers defined are X-Ubiregi-Auth-Token and X-Ubiregi-App-Secret.
+  # The headers defined are X-Ubiregi-Auth-Toke
   # X-Ubiregi-Auth-Token is installation specific secret, shared with the ubiregi.com server, the user, and the client.
-  # X-Ubiregi-App-Secret is app specific secret, shared with only the ubiregi.com server and the client.
   #
   def default_headers
-    salt = Time.now.strftime("%Y%m%d%H%M%S")
-    digest = Digest::SHA1.hexdigest(salt + @secret)
-    app_secret = salt + ":" + digest
-
     {
       "User-Agent" => "SampleAPI Client; en",
       "X-Ubiregi-Auth-Token" => @token,
-      "X-Ubiregi-App-Secret" => app_secret,
     }
   end
   
