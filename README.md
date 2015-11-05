@@ -12,7 +12,7 @@ Make sure library search path is configured properly.
 
     client = UbiregiAPI::Client.new(token)
 
-'token' is that you create at #1
+'token' is that you created at #1
 
 # 4. Send GET request
 
