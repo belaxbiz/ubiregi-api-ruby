@@ -1,6 +1,6 @@
 # 1. Prepare API Token
 
-    See the API documents ( http://ubiregiinc.github.io/ubiregi-api/#authentication-token )
+    See http://ubiregiinc.github.io/ubiregi-api/#authentication-token
 
 # 2. Load UbiregiAPI library
 
